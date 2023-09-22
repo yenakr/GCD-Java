@@ -1,33 +1,25 @@
 import java.io.*;
- 
-class GFG {
- 
-    // gcd() method, returns the GCD of a and b
-    static int gcd(int a, int b) {
-        // stores minimum(a, b)
-        int i;
-        if (a < b) i = a;
-        else i = b;
- 
-        // take a loop iterating through smaller number to 1
-        for (i = i; i > 1; i--) {
- 
-            // check if the current value of i divides both
-            // numbers with remainder 0 if yes, then i is
-            // the GCD of a and b
-            if (a % i == 0 && b % i == 0) return i;
-        }
- 
-        // if there are no common factors for a and b other
-        // than 1, then GCD of a and b is 1
-        return 1;
-    }
+import java.util.Scanner;
 
-    public static void main(String[] args) {
-        int a = 30, b = 20;
- 
-        // calling gcd() method over
-        // the integers 30 and 20
-        System.out.println("GCD = " + gcd(b, a));
-    }
+public class GCD {
+
+  public static void main(String[] args) {
+      Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Write 1st integer: ");
+        int one = scanner.nextInt();
+
+        System.out.print("Write 2nd integer: ");
+        int two = scanner.nextInt();
+
+        int result = hcf(one, two);
+        System.out.println("GCD: " + result);
+
+        scanner.close();
+  }
+
+  public static int hcf(int n1, int n2) {
+      if (n2 != 0) return hcf(n2, n1 % n2);
+      else return n1;
+  }
 }
